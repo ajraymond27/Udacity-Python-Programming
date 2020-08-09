@@ -128,3 +128,219 @@ else:
     result = "Oh dear, no prize this time."
 
 print(result)
+
+
+# For Loops
+
+# Practice: Quick Brown Fox
+# Use a for loop to take a list and print each element of the list in its own line.
+sentence = ["the", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"]
+
+for word in sentence:
+    print(word)
+
+# Practice: Multiples of 5
+# Write a for loop below that will print out every whole number that is a multiple of 5 and less than or equal to 30.
+for i in range(5, 35, 5):
+    print(i)
+
+# Quiz: Create Usernames
+# Write a for loop that iterates over the names list to create a usernames list. 
+# To create a username for each name, make everything lowercase and replace spaces with underscores. 
+# Running your for loop over the list:
+
+names = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
+usernames = []
+
+# write your for loop here
+for name in names:
+    usernames.append(name.lower().replace(" ", "_"))
+print(usernames)
+
+# Let's say instead of creating a new list, we want to modify the names list itself with the changes and write the following code. What would this do?
+names = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
+
+for name in names:
+    name = name.lower().replace(" ", "_")
+
+print(names)
+# It prints the original list. Must use range() to change the list itself - otherwise the changes must be assigned to a new variable
+
+# Quiz: Modify Usernames with Range
+# Write a for loop that uses range() to iterate over the positions in usernames to modify the list. 
+# Like you did in the previous quiz, change each name to be lowercase and replace spaces with underscores.
+
+usernames = ["Joey Tribbiani", "Monica Geller", "Chandler Bing", "Phoebe Buffay"]
+
+# write your for loop here
+for index in range(len(usernames)):
+    usernames[index] = usernames[index].lower().replace(" ", "_")
+
+print(usernames)
+
+# Quiz: Tag Counter
+# Write a for loop that iterates over a list of strings, tokens, and counts how many of them are XML tags. XML is a data language similar to HTML. 
+# You can tell if a string is an XML tag if it begins with a left angle bracket "<" and ends with a right angle bracket ">". 
+# Keep track of the number of tags using the variable count.
+# You can assume that the list of strings will not contain empty strings.
+
+tokens = ['<greeting>', 'Hello World!', '</greeting>']
+count = 0
+
+# write your for loop here
+for token in tokens:
+    if token[0] == '<' and token[-1] == '>':
+        count += 1
+
+print(count)
+
+# Quiz: Create an HTML List
+# Write some code, including a for loop, that iterates over a list of strings and creates a single string, html_str, which is an HTML list. 
+# For example, if the list is items = ['first string', 'second string'], printing html_str should output:
+# <ul>
+# <li>first string</li>
+# <li>second string</li>
+# </ul>
+# That is, the string's first line should be the opening tag <ul>. 
+# Following that is one line per element in the source list, surrounded by <li> and </li> tags. The final line of the string should be the closing tag </ul>.
+
+items = ['first string', 'second string']
+html_str = "<ul>\n"  # "\ n" is the character that marks the end of the line, it does
+                     # the characters that are after it in html_str are on the next line
+
+# write your code here
+for item in items:
+    html_str += "<li>{}</li>\n".format(item)
+html_str += "</ul>"
+
+print(html_str)
+
+# QUIZ:
+# If you want to create a new list called lower_colors, where each color in colors is lower cased, which code line should be inserted into the code block below?
+colors = ['Red', 'Blue', 'Green', 'Purple']
+lower_colors = [ ]
+
+for color in colors:
+    #finish this part
+    lower_colors.append(color.lower())
+
+print(lower_colors)
+
+
+# Building Dictionaries
+# Method 1: Using a for loop to create a set of counters
+book_title =  ['great', 'expectations','the', 'adventures', 'of', 'sherlock','holmes','the','great','gasby','hamlet','adventures','of','huckleberry','fin']
+word_counter = {}
+for word in book_title:
+    if word not in word_counter:
+        word_counter[word] = 1
+    else:
+        word_counter[word] += 1
+print(word_counter)
+
+# Method 2: Using the get method
+book_title =  ['great', 'expectations','the', 'adventures', 'of', 'sherlock','holmes','the','great','gasby','hamlet','adventures','of','huckleberry','fin']
+word_counter = {}
+for word in book_title:
+    word_counter[word] = word_counter.get(word, 0) + 1
+print(word_counter)
+
+# Iterating Through Dictionaries with For Loops
+
+cast = {
+           "Jerry Seinfeld": "Jerry Seinfeld",
+           "Julia Louis-Dreyfus": "Elaine Benes",
+           "Jason Alexander": "George Costanza",
+           "Michael Richards": "Cosmo Kramer"
+       }
+# only prints keys
+for key in cast:
+    print(key)
+
+# If you wish to iterate through both keys and values, you can use the built-in method items like this:
+for key, value in cast.items():
+    print("Actor: {}    Role: {}".format(key, value))
+
+# Quiz: Fruit Basket - Task 1
+# You would like to count the number of fruits in your basket. 
+# In order to do this, you have the following dictionary and list of fruits. 
+# Use the dictionary and list to count the total number of fruits, but you do not want to count the other items in your basket.
+
+result = 0
+basket_items = {'apples': 4, 'oranges': 19, 'kites': 3, 'sandwiches': 8}
+fruits = ['apples', 'oranges', 'pears', 'peaches', 'grapes', 'bananas']
+
+#Iterate through the dictionary
+for key, value in basket_items.items():
+#if the key is in the list of fruits, add the value (number of fruits) to result
+    if key in fruits:
+        result += value
+print(result)
+
+# Quiz: Fruit Basket - Task 2
+# If your solution is robust, you should be able to use it with any dictionary of items to count the number of fruits in the basket. 
+# Try the loop for each of the dictionaries below to make sure it always works.
+
+#Example 1
+
+result = 0
+basket_items = {'pears': 5, 'grapes': 19, 'kites': 3, 'sandwiches': 8, 'bananas': 4}
+fruits = ['apples', 'oranges', 'pears', 'peaches', 'grapes', 'bananas']
+
+# Your previous solution here
+for key, value in basket_items.items():
+    if key in fruits:
+        result += value
+
+print(result)
+
+#Example 2
+
+result = 0
+basket_items = {'peaches': 5, 'lettuce': 2, 'kites': 3, 'sandwiches': 8, 'pears': 4}
+fruits = ['apples', 'oranges', 'pears', 'peaches', 'grapes', 'bananas']
+
+# Your previous solution here
+for key, value in basket_items.items():
+    if key in fruits:
+        result += value
+
+print(result)
+
+
+#Example 3
+
+result = 0
+basket_items = {'lettuce': 2, 'kites': 3, 'sandwiches': 8, 'pears': 4, 'bears': 10}
+fruits = ['apples', 'oranges', 'pears', 'peaches', 'grapes', 'bananas']
+
+# Your previous solution here
+for key, value in basket_items.items():
+    if key in fruits:
+        result += value
+
+print(result)
+
+# Quiz: Fruit Basket - Task 3
+# So, a couple of things about the above examples:
+
+# It is a bit annoying having to copy and paste all the code to each spot - wouldn't it be nice to have a way to repeat the process without copying all the code? Don't worry! 
+# You will learn how to do this in the next lesson!
+
+# It would be nice to keep track of both the number of fruits and other items in the basket.
+
+# Use the environment below to try out this second part.
+fruit_count, not_fruit_count = 0, 0
+basket_items = {'apples': 4, 'oranges': 19, 'kites': 3, 'sandwiches': 8}
+fruits = ['apples', 'oranges', 'pears', 'peaches', 'grapes', 'bananas']
+
+#Iterate through the dictionary
+for key, value in basket_items.items():
+#if the key is in the list of fruits, add to fruit_count.
+    if key in fruits:
+        fruit_count += value
+#if the key is not in the list, then add to the not_fruit_count
+    else key not in fruits:
+        not_fruit_count += value
+
+print(fruit_count, not_fruit_count)
