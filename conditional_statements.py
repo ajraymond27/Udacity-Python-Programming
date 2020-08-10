@@ -340,7 +340,238 @@ for key, value in basket_items.items():
     if key in fruits:
         fruit_count += value
 #if the key is not in the list, then add to the not_fruit_count
-    else key not in fruits:
+    elif key not in fruits:
         not_fruit_count += value
 
 print(fruit_count, not_fruit_count)
+
+
+# While Loops
+
+# Practice: Factorials with While Loops
+# Find the factorial of a number using a while loop.
+# A factorial of a whole number is that number multiplied by every whole number between itself and 1. For example, 6 factorial (written "6!") equals 6 x 5 x 4 x 3 x 2 x 1 = 720. So 6! = 720.
+# We can write a while loop to take any given number and figure out what its factorial is.
+# Example: If number is 6, your code should compute and print the product, 720.
+
+# number to find the factorial of
+number = 6   
+
+# start with our product equal to one
+product = 1
+
+# track the current number being multiplied
+current = 1
+
+# write your while loop here
+while current <= number:
+    # multiply the product so far by the current number
+    product *= current
+    
+    # increment current with each iteration until it reaches number
+    current += 1
+
+# print the factorial of number
+print(product)
+
+# Practice: Factorials with For Loops
+# Now use a for loop to find the factorial!
+# It will now be great practice for you to try to revise the code you wrote above to find the factorial of a number, but this time, using a for loop. 
+
+# number to find the factorial of
+number = 6   
+
+# start with our product equal to one
+product = 1
+
+# write your for loop here
+for i in range(1,number+1):
+    product *= i
+# print the factorial of number
+print(product)
+
+# Quiz: Count By
+# Suppose you want to count from some number start_num by another number count_by until you hit a final number end_num. Use break_num as the variable that you'll change each time through the loop. 
+# For simplicity, assume that end_num is always larger than start_num and count_by is always positive.
+
+# Before the loop, what do you want to set break_num equal to? 
+# How do you want to change break_num each time through the loop? What condition will you use to see when it's time to stop looping?
+
+# After the loop is done, print out break_num, showing the value that indicated it was time to stop looping. 
+# It is the case that break_num should be a number that is the first number larger than end_num.
+
+start_num = 0
+end_num = 700
+count_by = 7
+break_num = start_num
+
+# write a while loop that uses break_num as the ongoing number to check against end_num
+while break_num < end_num:
+    break_num += count_by
+
+print(break_num)
+
+# Quiz: Count By Check
+# Suppose you want to count from some number start_num by another number count_by until you hit a final number end_num, and calculate break_num the way you did in the last quiz.
+
+# Now in addition, address what would happen if someone gives a start_num that is greater than end_num. 
+# If this is the case, set result to "Oops! Looks like your start value is greater than the end value. Please try again." 
+# Otherwise, set result to the value of break_num.
+
+start_num = 100
+end_num = 50
+count_by = 5
+break_num = start_num
+
+# write a condition to check that end_num is larger than start_num before looping
+if end_num > start_num:
+# write a while loop that uses break_num as the ongoing number to check against end_num
+    while break_num < end_num:
+        break_num +=count_by
+        result = break_num
+else:
+    result = 'Oops! Looks like your start value is greater than the end value. Please try again.'
+
+print(result)
+
+# Quiz: Nearest Square
+# Write a while loop that finds the largest square number less than an integer limit and stores it in a variable nearest_square. 
+# A square number is the product of an integer multiplied by itself, for example 36 is a square number because it equals 6*6.
+# For example, if limit is 40, your code should set the nearest_square to 36.
+
+limit = 27
+square = 1
+
+# write your while loop here
+while square**2 < limit:
+    nearest_square = square**2
+    square += 1
+
+print(nearest_square)
+
+# Question: What type of loop should we use?
+# You need to write a loop that takes the numbers in a given list named num_list:
+# num_list = [422, 136, 524, 85, 96, 719, 85, 92, 10, 17, 312, 542, 87, 23, 86, 191, 116, 35, 173, 45, 149, 59, 84, 69, 113, 166]
+
+# Your code should add up the odd numbers in the list, but only up to the first 5 odd numbers together. If there are more than 5 odd numbers, you should stop at the fifth. 
+# If there are fewer than 5 odd numbers, add all of the odd numbers.
+
+# Would you use a while or a for loop to write this code?
+
+num_list = [422, 136, 524, 85, 96, 719, 85, 92, 10, 17, 312, 542, 87, 23, 86, 191, 116, 35, 173, 45, 149, 59, 84, 69, 113, 166]
+odd_count = 0
+list_sum = 0
+i = 0
+len_num_list = len(num_list)
+
+while odd_count < 5 and i <= len_num_list:
+    if num_list[i] % 2 == 1:
+        list_sum += num_list[i]
+        odd_count += 1
+    i += 1
+
+print("This function added {} odd numbers to get list_sum".format(odd_count))
+print("The sum of all those odd numbers is {}".format(list_sum))
+        
+# Udacity's answer:
+count_odd = 0
+list_sum = 0
+i = 0
+len_num_list = len(num_list)
+
+while (count_odd < 5) and (i < len_num_list): 
+    if num_list[i] % 2 != 0:
+        list_sum += num_list[i]
+        count_odd += 1
+    i += 1
+
+print ("The numbers of odd numbers added are: {}".format(count_odd))
+print ("The sum of the odd numbers added is: {}".format(list_sum))
+
+
+# Break and Continue
+
+# Try It Out!
+
+manifest = [("bananas", 15), ("mattresses", 24), ("dog kennels", 42), ("machine", 120), ("cheeses", 5)]
+
+# the code breaks the loop when weight exceeds or reaches the limit
+print("METHOD 1")
+weight = 0
+items = []
+for cargo_name, cargo_weight in manifest:
+    print("current weight: {}".format(weight))
+    if weight >= 100:
+        print("  breaking loop now!")
+        break
+    else:
+        print("  adding {} ({})".format(cargo_name, cargo_weight))
+        items.append(cargo_name)
+        weight += cargo_weight
+
+print("\nFinal Weight: {}".format(weight))
+print("Final Items: {}".format(items))
+
+# skips an iteration when adding an item would exceed the limit
+# breaks the loop if weight is exactly the value of the limit
+print("\nMETHOD 2")
+weight = 0
+items = []
+for cargo_name, cargo_weight in manifest:
+    print("current weight: {}".format(weight))
+    if weight >= 100:
+        print("  breaking from the loop now!")
+        break
+    elif weight + cargo_weight > 100:
+        print("  skipping {} ({})".format(cargo_name, cargo_weight))
+        continue
+    else:
+        print("  adding {} ({})".format(cargo_name, cargo_weight))
+        items.append(cargo_name)
+        weight += cargo_weight
+
+print("\nFinal Weight: {}".format(weight))
+print("Final Items: {}".format(items))
+
+# Quiz: Break the String
+# Write a loop with a break statement to create a string, news_ticker, that is exactly 140 characters long. 
+# You should create the news ticker by adding headlines from the headlines list, inserting a space in between each headline. 
+# If necessary, truncate the last headline in the middle so that news_ticker is exactly 140 characters long.
+
+# Remember that break works in both for and while loops. Use whichever loop seems most appropriate. 
+# Consider adding print statements to your code to help you resolve bugs.
+
+# HINT: modify the headlines list to verify your loop works with different inputs
+headlines = ["Local Bear Eaten by Man",
+             "Legislature Announces New Laws",
+             "Peasant Discovers Violence Inherent in System",
+             "Cat Rescues Fireman Stuck in Tree",
+             "Brave Knight Runs Away",
+             "Papperbok Review: Totally Triffic"]
+
+news_ticker = ""
+for headline in headlines:
+    news_ticker += headline + " "
+    if len(news_ticker) >= 140:
+        news_ticker = news_ticker[:140]
+        break
+
+print(news_ticker)
+
+# Coding Quiz: Check for Prime Numbers
+# Prime numbers are whole numbers that have only two factors: 1 and the number itself. The first few prime numbers are 2, 3, 5, 7.
+# For instance, 6 has four factors: 1, 2, 3, 6.
+# 1 X 6 = 6
+# 2 X 3 = 6
+# So we know 6 is not a prime number.
+# In the following coding environment, write code to check if the numbers provided in the list check_prime are prime numbers.
+# If the numbers are prime, the code should print "[number] is a prime number."
+# If the number is NOT a prime number, it should print "[number] is not a prime number", and a factor of that number, other than 1 and the number itself: "[factor] is a factor of [number]".
+
+## Your code should check if each number in the list is a prime number
+check_prime = [26, 39, 51, 53, 57, 79, 85]
+
+## write your code here
+## HINT: You can use the modulo operator to find a factor
+
+
